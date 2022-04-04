@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Proyecto_Covid_Final.Notificaciones>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.noti_asunto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.noti_cuerpo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.noti_respuesta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Paciente.paciente_nombres)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.noti_asunto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.noti_cuerpo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.noti_respuesta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Paciente.paciente_nombres)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.noti_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.noti_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.noti_ID })
+        </td>
+    </tr>
+}
+
+</table>

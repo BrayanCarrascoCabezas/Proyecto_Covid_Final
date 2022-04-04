@@ -1,0 +1,66 @@
+﻿@model Proyecto_Covid_Final.Contacto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contacto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.contacto_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contacto_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contacto_apellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contacto_apellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contacto_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contacto_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contacto_cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contacto_cedula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contacto_celular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contacto_celular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contacto_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contacto_email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.contacto_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

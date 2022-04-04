@@ -1,0 +1,42 @@
+﻿@model Proyecto_Covid_Final.Examen
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Examen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.exa_resultado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.exa_resultado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.exa_descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.exa_descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paciente.paciente_nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paciente.paciente_nombres)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.exa_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

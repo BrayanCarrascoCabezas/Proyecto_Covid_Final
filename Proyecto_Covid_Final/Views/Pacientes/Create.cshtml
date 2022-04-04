@@ -1,0 +1,274 @@
+﻿@model Proyecto_Covid_Final.Paciente
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Paciente</h4>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css" />
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src='https://maps.google.com/maps/api/js?&libraries=places&key=AIzaSyBI4Nz_rH5OwVeValssZnAEcQEhl4VqZ8c'></script>
+    <script src="~/Scripts/locationpicker.jquery.js"></script>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_nombres, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.paciente_nombres, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.paciente_nombres, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_apellidos, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.paciente_apellidos, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.paciente_apellidos, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_password, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.paciente_password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.paciente_password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_fechaNaci, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.paciente_fechaNaci, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.paciente_fechaNaci, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_sexo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.paciente_sexo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.paciente_sexo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_cedula, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.paciente_cedula, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.paciente_cedula, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_telefono, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.paciente_telefono, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.paciente_telefono, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_celular, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.paciente_celular, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.paciente_celular, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.paciente_email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.paciente_email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_direccion, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.paciente_direccion, new { htmlAttributes = new { @id = "ModalMapaddress", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.paciente_direccion, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_latitud, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.paciente_latitud, new { htmlAttributes = new { @id = "ModalMapLat", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.paciente_latitud, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_longitud, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.paciente_longitud, new { htmlAttributes = new { @id = "ModalMapLog", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.paciente_longitud, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="container">
+            <button type="button" data-toggle="modal" data-target="#ModalMap" class="btn btn-default">
+                <span class="glyphicon glyphicon-map-marker"></span>
+                <span id="ubicacion">Seleccionar Ubicacion</span>
+            </button>
+            <style>
+                .pac-container {
+                    z-index: 99999;
+                }
+            </style>
+            <div class="modal fade" id="ModalMap" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Ubicacion:</label>
+                                    <div class="col-sm-9">
+
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="ModalMapPReview" style="width:100%;height:400px;"></div>
+                                <div class="clearfix">&nbsp;</div>
+                                <script>
+                                    $('#ModalMapPReview').locationpicker({
+                                        radius: 0,
+                                        location: {
+                                            latitude: -1.663891,
+                                            longitude: -78.657946
+                                        },
+                                        enableAutocomplete: true,
+                                        inputBinding: {
+
+                                            locationNameInput: $(document.getElementById('ModalMapaddress')),
+                                            latitudeInput: $(document.getElementById('ModalMapLat')),
+                                            longitudeInput: $(document.getElementById('ModalMapLog'))
+                                        }
+                                    });
+                                    $('#ModalMap').on('shown.bs.modal', function (ModalMapPReview) {
+                                        $('#ModalMapPReview').locationpicker('autosize');
+                                    });
+                                </script>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_personasvive, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.paciente_personasvive, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.paciente_personasvive, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_trabajo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.paciente_trabajo)
+                @Html.ValidationMessageFor(model => model.paciente_trabajo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_estudia, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.paciente_estudia)
+                @Html.ValidationMessageFor(model => model.paciente_estudia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_enfermedad, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.paciente_enfermedad)
+                @Html.ValidationMessageFor(model => model.paciente_enfermedad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_diabetis, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.paciente_diabetis)
+                @Html.ValidationMessageFor(model => model.paciente_diabetis, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_sobrepeso, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.paciente_sobrepeso)
+                @Html.ValidationMessageFor(model => model.paciente_sobrepeso, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.paciente_seguro, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.paciente_seguro)
+                @Html.ValidationMessageFor(model => model.paciente_seguro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.contacto_ID, "contacto_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("contacto_ID", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.contacto_ID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/locationpicker.jquery.js")
+
+}

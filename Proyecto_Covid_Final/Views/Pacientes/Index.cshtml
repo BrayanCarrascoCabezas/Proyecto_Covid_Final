@@ -1,0 +1,153 @@
+﻿@model IEnumerable<Proyecto_Covid_Final.Paciente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_apellidos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_fechaNaci)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_cedula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_celular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_latitud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_longitud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_personasvive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_trabajo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_estudia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_enfermedad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_diabetis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_sobrepeso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente_seguro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contacto.contacto_nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notificaciones.noti_asunto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_apellidos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_fechaNaci)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_sexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_celular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_latitud)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_longitud)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_personasvive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_trabajo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_estudia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_enfermedad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_diabetis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_sobrepeso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente_seguro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contacto.contacto_nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notificaciones.noti_asunto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.paciente_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.paciente_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.paciente_ID })
+        </td>
+    </tr>
+}
+
+</table>

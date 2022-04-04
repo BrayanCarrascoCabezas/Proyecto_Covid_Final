@@ -1,0 +1,58 @@
+﻿@model Proyecto_Covid_Final.Notificaciones
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Notificaciones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.noti_asunto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noti_asunto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.noti_cuerpo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noti_cuerpo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.noti_respuesta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noti_respuesta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.paciente_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.paciente_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paciente.paciente_nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paciente.paciente_nombres)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.noti_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

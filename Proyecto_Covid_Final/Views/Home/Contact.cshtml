@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+<style>
+    #map {
+        height: 500px;
+    }
+</style>
+<br />
+<br />
+<div>
+    <select class="form-control" id="selectedValue" onchange="GoLocation(this.value)">
+
+        <option>--Select--</option>
+        @foreach (var item in ViewBag.ListOfDropdown)
+        {
+
+            <option value="@item.paciente_ID">@item.paciente_direccion</option>
+        }
+
+    </select>
+</div>
+<br />
+<div id="map"></div>
+
+<script>
+    var map;
+    function initMap(zoomeLevel, latDb, longDb) {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: latDb != null ? latDb : -1.649127, lng: longDb != null ? longDb : -78.668582 },
+            zoom: zoomeLevel != null ? zoomeLevel : 14
+        });
+
+
+
+    }
+    function GoLocation(locationId) {
+        $.get("/Home/GetAllLocationById?id=" + locationId, function (data, status) {
+            var iconName = "../Icons/one.png";
+            initMap(14, data.Latitud, data.Longitud);
+            marker = new google.maps.Marker({
+                position: { lat: data.Latitud, lng: data.Longitud},
+                map: map,
+                icon: iconName
+            });
+            contentString = '<div id="content">' +
+                '<div id="siteNotice">' +
+                '</div>' +
+                '<h1 id="firstHeading" class="firstHeading">' + data.paciente_direccion + '</h1>' +
+                '<div id="bodyContent">' +
+                '<p><b>' + data.paciente_direccion + '</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+                'sandstone rock formation in the southern part of the ' +
+                'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) ' +
+                'south west of the nearest large town, Alice Springs; 450&#160;km ';
+            infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
+                return function () {
+                    infowindow.open(map, marker);
+                }
+            })(marker, data));
+            google.maps.event.addListener(marker, 'mouseout', (function (marker, i) {
+                return function () {
+                    infowindow.close();
+                }
+            })(marker, data));
+        })
+    }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdEwG24DhHip3RXzSbDzXJp1nr6EFP4ck&callback=initMap" async defer></script>
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
+
+
+
+
